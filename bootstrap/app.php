@@ -7,6 +7,8 @@ use Illuminate\Foundation\Configuration\Middleware;
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__.'/../routes/web.php',
+        api: __DIR__.'/../routes/api.php',
+        apiPrefix: 'api/v1', // tambahkan ini
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
@@ -19,6 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'check.role.access' => \App\Http\Middleware\CheckRoleAccess::class,
         ]);
     })
+    
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
